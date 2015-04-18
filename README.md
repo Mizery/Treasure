@@ -8,7 +8,7 @@ Dependencies:
 
 Explanation:
 ------------
-- Once you perform a search,a *.code.dump file will be made with in your current working containing all of the code that your search has provided.
+- Once you perform a search a *.code.dump file will be made within your current working containing all of the code that your search has provided.
 
 Installation:
 -------------
