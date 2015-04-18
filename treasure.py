@@ -15,6 +15,9 @@ def main():
     s3 = utilities.sabc(3)
     s4 = utilities.sabc(4)
 
+    if s1 is False:
+        Help()
+        
     try:
 
         if sys.argv[1] == '-h':
