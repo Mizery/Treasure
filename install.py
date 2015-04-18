@@ -34,7 +34,7 @@ def main(sln):
     os.system('sudo chown -R {} {}'.format(loginname, destinedpath))
 
     # Successful message.
-    print "installed {} successfully!, try '{} code' from a different directory".format(projectname, sln)
+    print "installed {} successfully!, try '{} hunt' from a different directory".format(projectname, sln)
     # Uninstall message
     print "To uninstall {} go to your {} directory and remove {}, {}.\n".format(projectname, symlinkdest, destinedpath, sln)
 
