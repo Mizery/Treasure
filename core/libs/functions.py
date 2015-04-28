@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 # -*- coding: binary -*-
 
-# Dependency imports
 import os
 import sys
+
+# Dependency imports
 import requests
 
 # Global user agent to use.
@@ -55,7 +56,7 @@ class Utilities():
         f = f.readlines()
         for i in f:
             i = i.replace("\n", '')
-            if s.encode('utf-8') in i:
+            if s.decode('utf-8').encode('utf-8') in i:
                 return True
 
 utilities = Utilities()
