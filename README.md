@@ -20,8 +20,6 @@ Usage:
 
     ./treasure.py hunt | interactively search for code.
 
-    ./treasure.py -e [FILE] [CONTENT] | extract desired infromation from your code dump.
-
     ./treasure.py -e [FILE] iat     | Grab instagram access tokens.
 
     ./treasure.py -e [FILE] ipv4    | Grab ipv4 addresses.
