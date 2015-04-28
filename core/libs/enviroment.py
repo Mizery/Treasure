@@ -80,9 +80,9 @@ class SearchOperations():
                         # Print output
                         utilities.pi(" {}".format(notifications.FOUND) + ru.split('/')[-1] + " " + "from {}".format(ru.split('/')[3]))
                         with open(codedumppath, "a+") as file:
-                            cb = utilities.sbc(codedumppath, ret.content.decode('utf-8'))
+                            cb = utilities.sbc(codedumppath, ret.text.encode('utf-8'))
                             if cb is None:
-                                file.write(ret.content + '\n')
+                                file.write(ret.content.encode('utf-8') + '\n')
                                 file.close()
 
                             elif cb is True:
