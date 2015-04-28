@@ -18,11 +18,9 @@ notifications = ColoredOutPut()
 def Help():
 
     print """
-    [GWF Certified] - https://twitter.com/GuerrillaWF
+    """+colors.P+"""[GWF Certified]"""+colors.N+""" - """+colors.BR+"""https://twitter.com/GuerrillaWF"""+colors.N+"""
 
-    ./treasure.py hunt                | interactively search for code.
-
-    ./treasure.py -e [FILE] [CONTENT] | extract desired infromation from your code dump.
+    ./treasure.py """+colors.R+"""hunt"""+colors.N+"""              | interactively search for code.
 
     ./treasure.py -e [FILE] iat     | Grab instagram access tokens.
 
@@ -30,7 +28,7 @@ def Help():
 
     ./treasure.py -e [FILE] ipv6    | Grab ipv6 addresses.
 
-    ./treasure.py -e [FILE] btc     | Grab bitcoin wallet addresses.
+    ./treasure.py -e [FILE] """+colors.T+"""btc"""+colors.N+"""     | Grab bitcoin wallet addresses.
 
     What can it extract from your code dump ?
 
