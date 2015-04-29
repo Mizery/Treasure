@@ -66,8 +66,9 @@ class SearchOperations():
             r = utilities.GetHTTPostRequest(searchfor.SEARCH, params)
             if searchfor.is_last_page(r.content):
                 utilities.pi('** No more results for {} **'.format(query))
-                breakpoint = 1 # Break the while loop.
+                breakpoint = 2 # Break the while loop.
                 break
+
             for u in searchfor.extract(r.content):
                 ru = searchfor.raw_url(u)
                 if listonly:
@@ -82,7 +83,7 @@ class SearchOperations():
                         with open(codedumppath, "a+") as file:
                             cb = utilities.sbc(codedumppath, ret.text.encode('utf-8'))
                             if cb is None:
-                                file.write(ret.content.encode('utf-8') + '\n')
+                                file.write(ret.content.decode('utf-8').encode('utf-8') + '\n')
                                 file.close()
 
                             elif cb is True:
