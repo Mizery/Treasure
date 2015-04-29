@@ -35,6 +35,7 @@ Usage:
     - bitcoin wallet addresses
 
 Guerrilla Warfare Free License ("GWFL"):
+----------------------------------------
 
 1. You're free to modify this software to YOUR liking or leave it as is.
 
