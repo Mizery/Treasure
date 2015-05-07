@@ -83,7 +83,14 @@ class SearchOperations():
                         with open(codedumppath, "a+") as file:
                             cb = utilities.sbc(codedumppath, ret.text.encode('utf-8'))
                             if cb is None:
-                                file.write(ret.content.decode('utf-8').encode('utf-8') + '\n')
+                                # Quick Fix.
+                                # If there are any unicode errors, just pass them for now.
+                                try:
+                                    filecontent = ret.content.decode('utf-8').encode('utf-8')
+                                except Exception:
+                                    pass
+                                
+                                file.write(filecontent + '\n')
                                 file.close()
 
                             elif cb is True:
