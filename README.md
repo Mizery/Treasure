@@ -1,5 +1,5 @@
 # Treasure
-Hunt for sensitive information through githubs code search.
+Hunt for sensitive information on github.
 
 Dependencies:
 -------------
