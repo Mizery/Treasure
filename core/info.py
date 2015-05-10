@@ -22,13 +22,15 @@ def Help():
 
     ./treasure.py """+colors.R+"""hunt"""+colors.N+"""              | interactively search for code.
 
+    ./treasure.py ssh [USERNAME] | Grab a users Public SSH Key(s) if available.
+
     ./treasure.py -e [FILE] iat     | Grab instagram access tokens.
 
     ./treasure.py -e [FILE] ipv4    | Grab ipv4 addresses.
 
     ./treasure.py -e [FILE] ipv6    | Grab ipv6 addresses.
 
-    ./treasure.py -e [FILE] """+colors.T+"""btc"""+colors.N+"""     | Grab bitcoin wallet addresses.
+    ./treasure.py -e [FILE] """+colors.T+"""btc"""+colors.N+""" | Grab bitcoin wallet addresses.
 
     What can it extract from your code dump ?
 
