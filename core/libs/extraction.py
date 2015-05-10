@@ -3,6 +3,9 @@
 # -*- coding: binary -*-
 
 import re
+import json
+from functions import utilities
+from core.info import notifications
 
 class EXTRACTIONOPERATIONS():
 
@@ -80,5 +83,35 @@ class EXTRACTIONOPERATIONS():
 
         #returns a list of unique ipv4 addresses
         return u.keys()
+
+    def PublicSSHKeys(self, name):
+
+        # Json API Response
+        APIR = utilities.GetHTTPRequest("https://api.github.com/users/{}/keys".format(name)).json()
+
+        try:
+            if APIR.has_key('message') is True and APIR['message'] == "Not Found":
+                print "{}{} doesn't exist.".format(notifications.ERROR, name)
+                exit(0)
+        except AttributeError:
+            pass
+
+        if APIR == []:
+            print '' # Clean print.
+            print "{}{} does not have any public ssh keys available at this time.".format(notifications.INFO, name)
+
+        if APIR != []:
+
+            # Length of the keys list array.
+            lok = len(APIR)
+
+            for i in APIR[0:lok]:
+
+                print '' # Clean print | for readable format.
+                print notifications.INFO + str(i['id']), 'Owns this SSH key.'
+                print '----------------------------'
+                print i['key']
+
+        print "" # Clean print
 
 extract = EXTRACTIONOPERATIONS()

@@ -4,12 +4,13 @@
 
 import os
 import sys
+from browser import getUserAgent
 
 # Dependency imports
 import requests
 
 # Global user agent to use.
-GLOBALUSERAGENT = {"User-Agent":"Mozilla/5.0 (X11; Linux x86; rv:37.0) Gecko/20100101 Firefox/1000.0"}
+GLOBALUSERAGENT = {"User-Agent":getUserAgent()}
 
 class Utilities():
 
