@@ -7,8 +7,9 @@ from core.info import Help
 from core.libs.process import output
 from core.libs.functions import utilities
 from core.libs.enviroment import interactive
+from core.libs.extraction import extract
 
-def main():
+def main(IFNOARGATALL):
 
     s1 = utilities.sabc(1)
     s2 = utilities.sabc(2)
@@ -17,11 +18,15 @@ def main():
 
     if s1 is False:
         Help()
-        
+
     try:
 
         if sys.argv[1] == '-h':
             Help()
+
+        if sys.argv[1] == 'ssh' and s2 is True and s3 is False:
+            extract.PublicSSHKeys(sys.argv[2])
+            exit(0)
 
         if sys.argv[1] == '-e' and s2 is True and sys.argv[3] == 'btc':
             output.BTCAddresses(sys.argv[2])
@@ -51,4 +56,7 @@ def main():
         pass
 
 if __name__ == "__main__":
-    main()
+    try:
+        main(sys.argv[1])
+    except IndexError:
+        Help()
