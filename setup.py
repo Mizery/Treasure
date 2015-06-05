@@ -47,7 +47,7 @@ if __name__ == '__main__':
             main(sys.argv[1])
         except IndexError, e:
             print "\n Provide a syslink name for {}".format(projectname)
-            print " Usage: sudo ./install [NAME]\n"
+            print " Usage: sudo ./setup.py [NAME]\n"
     except OSError, e:
         pass
         if 'File exists' in e:
