@@ -134,5 +134,70 @@ class PROCESSEXTRACT():
 
             elif count > 1:
                 utilities.pi("\n" + notifications.STATUS + "Extracted {} Bitcoin addresses from {}\n".format(str(count), file))
-                
+
+    def FacebookAccessTokens(self, file):
+        FATExtract = extract.FacebookAccessTokens(file)
+
+        if len(FATExtract) is 0:
+            utilities.pi("{}No Facebook Access Tokens in {}".format(notifications.FAIL, file))
+
+        if len(FATExtract) > 0:
+            FoundFATs = [] # Re-filter, so you get exactly what you're looking for.
+            for instance in FATExtract:
+                FATRegex = re.compile(r'(access_token\=[0-9]{15}\|(.*){27})')
+                FATList = FATRegex.search(instance)
+                FATs = FATList.group()
+                FoundFATs.append(FATs)
+
+            UOD = {}
+            for item in FoundFATs:
+                UOD[item] = 1
+            keys = UOD.keys()
+            utilities.pi("--------------------------")
+            utilities.pi("  Facebook Access Tokens  ")
+            utilities.pi("--------------------------")
+            count = 0
+
+            for output in keys:
+                count += 1
+                utilities.pi(notifications.INFO + output)
+
+            if count is 1:
+                utilities.pi("\n" + notifications.STATUS + "Extracted {} Facebook Access Token from {}\n".format(str(count), file))
+
+            elif count > 1:
+                utilities.pi("\n" + notifications.STATUS + "Extracted {} Facebook Access Tokens from {}\n".format(str(count), file))
+
+    def BlockchainIdentifiers(self, file):
+        BCIDSExtract = extract.BlockchainIdentifiers(file)
+        if len(BCIDSExtract) is 0:
+            utilities.pi("{}No Blockchain Identifiers in {}".format(notifications.FAIL, file))
+
+        if len(BCIDSExtract) > 0:
+            FoundBCIDS = [] # Re-filter, so you get exactly what you're looking for.
+            for instance in BCIDSExtract:
+                BCIDSRegex = re.compile(r'[0-9a-f]{5,8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{5,13}')
+                BCIDSList = BCIDSRegex.search(instance)
+                BCIDSs = BCIDSList.group()
+                FoundBCIDS.append(BCIDSs)
+
+            UOD = {}
+            for item in FoundBCIDS:
+                UOD[item] = 1
+            keys = UOD.keys()
+            utilities.pi("--------------------------")
+            utilities.pi("  Blockchain Identifiers  ")
+            utilities.pi("--------------------------")
+            count = 0
+
+            for output in keys:
+                count += 1
+                utilities.pi(notifications.INFO + output)
+
+            if count is 1:
+                utilities.pi("\n" + notifications.STATUS + "Extracted {} Blockchain Identifier from {}\n".format(str(count), file))
+
+            elif count > 1:
+                utilities.pi("\n" + notifications.STATUS + "Extracted {} Blockchain Identifiers from {}\n".format(str(count), file))
+
 output = PROCESSEXTRACT()

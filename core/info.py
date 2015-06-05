@@ -18,23 +18,21 @@ notifications = ColoredOutPut()
 def Help():
 
     print """
-    """+colors.P+"""[GWF Certified]"""+colors.N+""" - """+colors.BR+"""https://twitter.com/GuerrillaWF"""+colors.N+"""
+    [GWF Certified] - https://twitter.com/GuerrillaWF
 
-    ./treasure.py """+colors.R+"""hunt"""+colors.N+"""              | interactively search for code.
+    ./treasure.py hunt | interactively search for something.
 
     ./treasure.py ssh [USERNAME] | Grab a users Public SSH Key(s) if available.
 
-    ./treasure.py -e [FILE] iat     | Grab instagram access tokens.
+    ./treasure.py -e [FILE] iat  | Grab instagram access tokens.
 
-    ./treasure.py -e [FILE] ipv4    | Grab ipv4 addresses.
+    ./treasure.py -e [FILE] ipv4 | Grab ipv4 addresses.
 
-    ./treasure.py -e [FILE] ipv6    | Grab ipv6 addresses.
+    ./treasure.py -e [FILE] ipv6 | Grab ipv6 addresses.
 
-    ./treasure.py -e [FILE] """+colors.T+"""btc"""+colors.N+""" | Grab bitcoin wallet addresses.
+    ./treasure.py -e [FILE] btc | Grab bitcoin wallet addresses.
 
-    What can it extract from your code dump ?
+    ./treasure.py -e [FILE] bid | Grab blockchain identifiers.
 
-    - ipv4, ipv6 addresses
-    - instagram access tokens
-    - bitcoin wallet addresses
+    ./treasure.py -e [FILE] fat | Grab facebook accesst tokens.
     """

@@ -114,4 +114,36 @@ class EXTRACTIONOPERATIONS():
 
         print "" # Clean print
 
+    def BlockchainIdentifiers(self, fobli):
+
+        found = [] # List of found Blockchain Developer api keys
+        mailsrch = re.compile(r'[0-9a-f]{5,8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{5,13}')
+        with open(fobli, 'rb') as FileWithBlockchainIdentifiers:
+            for line in FileWithBlockchainIdentifiers:
+                identifiers = line.strip()
+                if mailsrch.findall(identifiers):
+                    found.append(identifiers)
+
+        u = {}
+        for item in found:
+            u[item] = 1
+
+        return u.keys()
+
+    def FacebookAccessTokens(self, fofaat):
+
+        found = [] # List of found Blockchain Developer api keys
+        mailsrch = re.compile(r'access_token\=[0-9]{15}\|(.*){27}')
+        with open(fofaat, 'rb') as FacebookAccessTokens:
+            for line in FacebookAccessTokens:
+                token = line.strip()
+                if mailsrch.findall(token):
+                    found.append(token)
+
+        u = {}
+        for item in found:
+            u[item] = 1
+
+        return u.keys()
+
 extract = EXTRACTIONOPERATIONS()

@@ -43,13 +43,19 @@ def main(IFNOARGATALL):
         if sys.argv[1] == '-e' and s2 is True and sys.argv[3] == 'ipv6':
             output.IPv6Addresses(sys.argv[2])
 
+        if sys.argv[1] == '-e' and s2 is True and sys.argv[3] == 'fat':
+            output.FacebookAccessTokens(sys.argv[2])
+
+        if sys.argv[1] == '-e' and s2 is True and sys.argv[3] == 'bid':
+            output.BlockchainIdentifiers(sys.argv[2])
+
         if sys.argv[1] != '-e' and sys.argv[1] != 'hunt':
             Help()
 
         if sys.argv[1] == '-e' and s2 is False:
             Help()
 
-        if sys.argv[3] != 'btc' and sys.argv[3] != 'iat' and sys.argv[3] != 'ipv4' and sys.argv[3] != 'ipv6':
+        if sys.argv[3] != 'btc' and sys.argv[3] != 'iat' and sys.argv[3] != 'ipv4' and sys.argv[3] != 'ipv6' and sys.argv[3] != 'bid' and sys.argv[3] != 'fat':
             Help()
 
     except IndexError:
