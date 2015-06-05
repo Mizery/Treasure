@@ -1,14 +1,54 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# -*- coding: binary -*-
 
-from distutils.core import setup
-from setuptools import find_packages
+import os
+import sys
+from time import sleep
+from shutil import copytree
 
-setup(name='Treasure',
-      version='1',
-      description='Hunt for sensitive information on github.',
-      author='GWF',
-      author_email='gwf@gwf.ninja',
-      url='https://twitter.com/GuerrillaWF',
-      packages=find_packages(),
-      scripts = ['treasure']
-     )
+# This script will install this script into your /usr/local/bin directory.
+
+# TO:DO
+# Add auto-uninstall method.
+
+loginname = os.getlogin()
+projectpath = os.path.dirname(os.path.abspath(__file__))
+projectname = projectpath.split('/')[-1]
+destinedpath = '/usr/local/bin/{}'.format(projectname)
+symlinkdest = '/usr/local/bin/'
+
+def rootcheck():
+    if os.getuid() != 0:
+        print "\n Run as root! to install {} to your /usr/local/bin/ directory.\n".format(projectname)
+        exit(0)
+
+def main(sln):
+
+    print "\nInstalling {} to /usr/local/bin/{}".format(projectname, sln)
+    sleep(1)
+    # Copy the current directory to the dest path
+    copytree(projectpath, destinedpath)
+    os.system('sudo ln -s {} {}'.format(destinedpath + '/treasure', symlinkdest + '/{}'.format(sln)))
+    os.system('sudo chmod a+rw -R {}'.format(destinedpath))
+    os.system('sudo chown -R {} {}'.format(loginname, destinedpath))
+
+    # Successful message.
+    print "installed {} successfully!, try '{} code' from a different directory".format(projectname, sln)
+    # Uninstall message
+    print "To uninstall {} go to your {} directory and remove {}, {}.\n".format(projectname, symlinkdest, destinedpath, sln)
+
+if __name__ == '__main__':
+    # Quick root check.
+    rootcheck()
+
+    try:
+        try:
+            main(sys.argv[1])
+        except IndexError, e:
+            print "\n Provide a syslink name for {}".format(projectname)
+            print " Usage: sudo ./install [NAME]\n"
+    except OSError, e:
+        pass
+        if 'File exists' in e:
+            print "To uninstall {} go to your {} directory and remove {}, {}.\n".format(projectname, symlinkdest, destinedpath, sys.argv[1])
