@@ -28,7 +28,7 @@ Usage:
 
       ./treasure.py -e [FILE] bid | Grab blockchain identifiers.
 
-      ./treasure.py -e [FILE] fat | Grab facebook accesst tokens.
+      ./treasure.py -e [FILE] fat | Grab facebook access tokens.
 
     What can it extract from your code dump ?
 
